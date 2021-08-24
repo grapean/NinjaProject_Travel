@@ -6,6 +6,8 @@ from pymongo import MongoClient
 client = MongoClient('localhost', 27017)
 db = client.dbsparta
 
+from datetime import datetime
+
 
 @app.route('/')
 def home():
@@ -26,9 +28,13 @@ def test_post():
    user_name_receive = request.form['user_name_give']
    comment_receive = request.form['comment_give']
 
+   today = datetime.now()
+   mytime = today.strftime('%Y.%m.%d %H:%M')
+
    doc = {
        'user_name': user_name_receive,
-       'comment': comment_receive
+       'comment': comment_receive,
+       'data': mytime
    }
 
    db.travel.insert_one(doc)

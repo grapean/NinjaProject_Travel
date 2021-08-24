@@ -4,26 +4,9 @@
             color: #0d141f;
         }
 
-
         body {
             margin: 0;
             padding: 0;
-        }
-
-        @media screen and (max-width: 1000px) {
-            .select-box {
-                flex-direction: column;
-            }
-        }
-
-        h1 {
-            font-size: 36px;
-            font-weight: bold;
-        }
-
-        .contents1 {
-            font-size: 18px;
-            font-weight: bold;
         }
 
 
@@ -63,6 +46,29 @@
         }
 
 
+        /*배너 텍스트*/
+
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .contents1 {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .banner-text-box {
+            width: 1200px;
+            margin: auto;
+            display: block;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+
         /* Slide */
 
         .carousel {
@@ -82,17 +88,3 @@
         }
 
 
-        /* Banner Text */
-        .banner-text-box {
-            width: 1200px;
-            margin: auto;
-            display: block;
-            position: absolute;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .intro_text {
-            margin-bottom: 60px;
-        }

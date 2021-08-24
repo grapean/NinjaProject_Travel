@@ -30,12 +30,13 @@
                     for (let i = 0; i < comments.length; i++) {
                         let user_name = comments[i]['user_name']
                         let comment = comments[i]['comment']
+                        let data = comments[i]['data']
 
                         let temp_html = `<li class="comment user-comment">
                                             <div class="info">
-                                                <p>${user_name}<span class="date">21.08.20 12:37</span></p>
+                                                <p class="comment-text-user">${user_name}<span class="date">${data}</span></p>
                                             </div>
-                                            <p>${comment}</p>
+                                            <p class="comment-text">${comment}</p>
                                         </li>`
                         $('#comment-area').append(temp_html)
                     }
@@ -44,8 +45,8 @@
         }
 
         function makeComment() {
-            let user_name = $('#user_name').val()
-            let comment = $('#comment_box').val()
+            let user_name = $('#user_name').val();
+            let comment = $('#comment_box').val();
 
             $.ajax({
                 type: "POST",
@@ -77,7 +78,6 @@
         </ul>
     </div>
 
-
     <!--Post-->
     <div class="post-area">
         <!--Title&Date-->
@@ -93,7 +93,6 @@
                 </p>
             </div>
         </div>
-
         <!--Tag-->
         <div class="badge-line">
             <span class="badge rounded-pill bg-light text-dark">맛집</span>
@@ -114,6 +113,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
                 crossorigin="anonymous"></script>
+
     </div>
 </div>
 </body>
