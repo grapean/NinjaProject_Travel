@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../static/style_create.css">
+</head>
+
+<script>
+
+        function makeReview() {
+            let title = $('#title').val()
+            let season = $('#season').val()
+            let area = $('#area').val()
+            let keywords = $('#keywords').val()
+            let review_text = $('#review_text').val()
+
+            $.ajax({
+                type: "POST",
+                url: "/create",
+                data: {title_give:title, season_give:season, area_give:area, keywords_give:keywords, review_text_give:review_text},
+                success: function (response) {
+                    alert(response['msg']);
+                    window.location.reload()
+                }
+            })
+        }
+
+</script>
+
+<body>
+
+<div class="wrap">
+    <!--Header-->
+    <div class="header">
+        <!--Site name-->
+        <div class="site_name">김르탄의 여행 일지</div>
+        <!--Menu-->
+        <ul class="nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="#">방명록</a></li>
+            <li><a href="#">리뷰 작성</a></li>
+        </ul>
+    </div>
+
+    <!--Create Post Area-->
+    <div class="create-post input-box">
+        <!--Input boxes-->
+        <input type="text" class="item" placeholder="제목을 입력해주세요" id="title">
+        <input type="file" class="item" placeholder="사진을 선택해주세요">
+        <select class="item" id="season">
+            <option>계절을 선택해주세요</option>
+            <option>봄</option>
+            <option>여름</option>
+            <option>가을</option>
+            <option>겨울</option>
+        </select>
+        <select class="item" id="area">
+            <option>지역을 선택해주세요</option>
+            <option>서울</option>
+            <option>경기</option>
+            <option>강원</option>
+            <option>충남</option>
+        </select>
+        <select class="item" id="keywords">
+            <option>키워드를 선택해주세요</option>
+            <option>가족</option>
+            <option>커플</option>
+            <option>맛집</option>
+            <option>힐링</option>
+        </select>
+        <input type="text" class="item" placeholder="게시물을 작성해주세요" id="review_text">
+        <button onclick="makeReview()" type="button" class="item" name="button">리뷰 등록</button>
+    </div>
+
+    <ul class="comment-section" id="comment-area">
+    </ul>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+            crossorigin="anonymous"></script>
+
+</div>
+</div>
+</body>
+</html>
