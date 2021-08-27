@@ -17,16 +17,18 @@
 <script>
 
         function makeReview() {
-            let title = $('#title').val()
-            let season = $('#season').val()
-            let area = $('#area').val()
-            let keywords = $('#keywords').val()
+            let title = $('#title').val();
+            let season = $('#season').val();
+            let area = $('#area').val();
+            let keywords = $('#keywords').val();
             let review_text = $('#review_text').val()
+            let file = $('#file')[0].files[0];
+            let form_data = new FormData();
 
             $.ajax({
                 type: "POST",
                 url: "/create",
-                data: {title_give:title, season_give:season, area_give:area, keywords_give:keywords, review_text_give:review_text},
+                data: {title_give:title, season_give:season, area_give:area, keywords_give:keywords, review_text_give:review_text, file_give:file},
                 success: function (response) {
                     alert(response['msg']);
                     window.location.reload()
@@ -55,14 +57,13 @@
     <div class="create-post input-box">
         <!--Input boxes-->
         <input type="text" class="item" placeholder="제목을 입력해주세요" id="title">
-        <input type="file" class="item" placeholder="사진을 선택해주세요">
+        <input type="file" class="item" placeholder="사진을 선택해주세요" id="file">
         <input type="text" class="item" placeholder="계절을 입력해주세요" id="season">
         <input type="text" class="item" placeholder="다녀오신 곳이 어딘가요?" id="area">
         <input type="text" class="item" placeholder="이번 여행 키워드를 적어주세요!" id="keywords">
-        <input type="text" class="item" placeholder="게시물을 작성해주세요" id="review_text">
+        <textarea type="text" class="item" placeholder="게시물을 00자 이내로 작성해주세요" id="review_text"></textarea>
         <button onclick="makeReview()" type="button" class="item" name="button">리뷰 등록</button>
     </div>
-
     <ul class="comment-section" id="comment-area">
     </ul>
 
