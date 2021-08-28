@@ -14,16 +14,41 @@
     <link rel="stylesheet" href="../static/style_home.css">
 
 
-
     <script>
-        function showResult() {
+
+        $(document).ready(function () {
+            showReview();
+        });
+
+        function showReview() {
             $.ajax({
                 type: "GET",
-                url: "/review?sample_give=샘플데이터",
+                url: "/home",
                 data: {},
                 success: function (response) {
-                    alert(response['msg']);
-                    console.log(response)
+                    let reviews = response['all_reviews']
+                    for (let i = 0; i < reviews.length; i++) {
+                        let title = reviews[i]['title']
+                        let review_text = reviews[i]['review_text']
+                        let keywords = reviews[i]['keywords']
+
+                        let temp_html = `<div class="block" >
+                                            <div class="grid">
+                                                <div class="image">
+                                                    1 Image
+                                                    <img src="">
+                                                </div>
+                                                <div class="title">
+                                                    <p>${title}</p>
+                                                </div>
+                                                <div class="content">
+                                                    <p>${review_text}</p>
+                                                </div>
+                                                <div class="hash">${keywords}</div>
+                                            </div>
+                                         </div>`
+                        $('#reviews-box').append(temp_html)
+                    }
                 }
             })
         }
@@ -41,7 +66,7 @@
         <div class="site_name">김르탄의 여행 일지</div>
         <ul class="nav">
             <li><a href="/">Home</a></li>
-            <li><a href="#">방명록</a></li>
+            <li><a href="/page">방명록</a></li>
             <li><a href="/create">리뷰 작성</a></li>
         </ul>
     </div>
@@ -76,6 +101,12 @@
             <h1 id="search">김르탄의 여행 일지</h1>
             <h6 class="contents1">여행을 기록하고 공유합니다 :)</h6>
         </div>
+
+        <!--Main Text-->
+        <div class="main-text-area" id="reviews-box">
+        </div>
+        <div class="reviews" id="put-here"></div>
+
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"

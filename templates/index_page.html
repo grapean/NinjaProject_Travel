@@ -17,8 +17,8 @@
     <script>
 
         $(document).ready(function () {
-                showComment();
-            });
+            showComment();
+        });
 
         function showComment() {
             $.ajax({
@@ -51,14 +51,13 @@
             $.ajax({
                 type: "POST",
                 url: "/page",
-                data: {user_name_give:user_name, comment_give:comment},
+                data: {user_name_give: user_name, comment_give: comment},
                 success: function (response) {
                     alert(response['msg']);
-                    window.location.reload()
+window.location.reload()
                 }
             })
         }
-
     </script>
 
 </head>
@@ -74,38 +73,19 @@
         <!--Menu-->
         <ul class="nav">
             <li><a href="/">Home</a></li>
-            <li><a href="#">방명록</a></li>
-            <li><a href="/">리뷰 작성</a></li>
+            <li><a href="/page">방명록</a></li>
+            <li><a href="/create">리뷰 작성</a></li>
         </ul>
     </div>
 
     <!--Post-->
-    <div class="post-area">
-        <!--Title&Date-->
-        <h3>오늘은 소소하게 동네 구경!</h3>
-        <p class="date1">2021.08.20 20:46</p>
-        <!--Image&Text Area-->
-        <div class="container">
-            <img class="img"
-                 src="https://images.unsplash.com/photo-1526199119161-4be1e3368d52?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80"/>
-            <div class="text-area">
-                <p class="desc">
-                    여기 텍스트가 들어가야 합니다. 근데 text box를 따로 만들어야 하는건 아니겠지? :)
-                </p>
-            </div>
-        </div>
-        <!--Tag-->
-        <div class="badge-line">
-            <span class="badge rounded-pill bg-light text-dark">맛집</span>
-            <span class="badge rounded-pill bg-light text-dark">나홀로</span>
-            <span class="badge rounded-pill bg-light text-dark">힐링</span>
-        </div>
+    <div class="post-area" id="review-area">
         <!--Comments-->
         <div class="comment-box">
             <!--작성자&댓글&버튼-->
             <input class="user" type="text" placeholder="닉네임" id="user_name">
             <input class="user-comment" placeholder="댓글을 남겨주세요" id="comment_box">
-            <button onclick="makeComment()" type="button" name="button" id="comment">comment</button>
+            <button onclick="makeComment()" type="button" name="button" id="comment">댓글 등록</button>
         </div>
 
         <ul class="comment-section" id="comment-area">

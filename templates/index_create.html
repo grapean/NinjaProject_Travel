@@ -48,8 +48,8 @@
         <!--Menu-->
         <ul class="nav">
             <li><a href="/">Home</a></li>
-            <li><a href="#">방명록</a></li>
-            <li><a href="#">리뷰 작성</a></li>
+            <li><a href="/page">방명록</a></li>
+            <li><a href="/create">리뷰 작성</a></li>
         </ul>
     </div>
 
@@ -61,7 +61,7 @@
         <input type="text" class="item" placeholder="계절을 입력해주세요" id="season">
         <input type="text" class="item" placeholder="다녀오신 곳이 어딘가요?" id="area">
         <input type="text" class="item" placeholder="이번 여행 키워드를 적어주세요!" id="keywords">
-        <textarea type="text" class="item" placeholder="게시물을 00자 이내로 작성해주세요" id="review_text"></textarea>
+        <textarea type="text" class="item" placeholder="게시물을 00자 이내로 작성해주세요" id="review_text" maxlength="800"></textarea>
         <button onclick="makeReview()" type="button" class="item" name="button">리뷰 등록</button>
     </div>
     <ul class="comment-section" id="comment-area">
